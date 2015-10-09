@@ -1,0 +1,189 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include <winres.h>
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1250)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_P3                  ICON    DISCARDABLE     "p3.ico"
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Croatian resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_HRV)
+#ifdef _WIN32
+LANGUAGE LANG_CROATIAN, SUBLANG_DEFAULT
+#pragma code_page(1250)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include <winres.h>\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // Croatian resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG1 DIALOG DISCARDABLE  0, 0, 191, 170
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Modal Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "&Text:",IDC_STATIC,7,9,27,12
+    EDITTEXT        IDC_EDIT1,42,7,34,14,ES_AUTOHSCROLL
+    LTEXT           "I&nteger:",IDC_STATIC,7,30,35,12
+    EDITTEXT        IDC_EDIT2,42,28,34,14,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Edit boxes are &enabled",IDC_CHECK1,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,50,112,10
+    GROUPBOX        "Group of radio buttons",IDC_STATIC,7,70,87,63
+    CONTROL         "Radio &1",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,18,85,41,10
+    CONTROL         "Radio &2",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,18,100,
+                    41,10
+    CONTROL         "Radio &3",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON,18,115,
+                    41,10
+    LTEXT           "&Combobox",IDC_STATIC,116,7,47,8
+    COMBOBOX        IDC_COMBO1,116,17,49,42,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "&Listbox",IDC_STATIC,116,70,53,8
+    LISTBOX         IDC_LIST1,116,80,55,54,LBS_SORT | LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,79,149,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,134,149,50,14
+END
+
+IDD_DIALOG2 DIALOG DISCARDABLE  0, 0, 186, 95
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Modeless"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CTEXT           "This is\nmodeless\ndialog",IDC_STATIC,7,7,172,31
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_DIALOG1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 184
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 163
+    END
+
+    IDD_DIALOG2, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 88
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDM_P3 MENU DISCARDABLE 
+BEGIN
+    POPUP "&Dialog"
+    BEGIN
+        POPUP "Common"
+        BEGIN
+            MENUITEM "&Color",                      ID_DIALOG_COMMON_COLOR
+            MENUITEM "&Font",                       ID_DIALOG_COMMON_FONT
+            MENUITEM "&Open",                       ID_DIALOG_COMMON_OPEN
+            MENUITEM "&Save",                       ID_DIALOG_COMMON_SAVE
+        END
+        MENUITEM "Modal",                       ID_DIALOG_MODAL
+        MENUITEM "Modeless",                    ID_DIALOG_MODELESS
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_EXIT
+    END
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

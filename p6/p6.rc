@@ -1,0 +1,144 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include <winres.h>
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1250)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_P6                  ICON    DISCARDABLE     "p6.ico"
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Croatian resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_HRV)
+#ifdef _WIN32
+LANGUAGE LANG_CROATIAN, SUBLANG_DEFAULT
+#pragma code_page(1250)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include <winres.h>\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_INSTR               "Instructions:\n\nLeft click adds point to vector, right click remove all points from vector.\nTyping adds characters to string, ESC empties string.\n\nView/Ellipse: first two points are bounds of rectangle, next two points are used to define Chord/Pie (Options/Pie)\nView/Text: first point is used for TextOut, DrawText is used if there are no points in vector\nView/Mapping Mode: uses istotropic or anysotropic mode (Options/Anysotropic)\nOptions/Foreground Color: used for pen, text color\nOptions/Background Color: used for brush, text back color\nOption/Region: uses polygon as clipping region\nOption/Winding: used polygon fill mode (alternate/winding)"
+END
+
+#endif    // Croatian resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDM_P6 MENU DISCARDABLE 
+BEGIN
+    POPUP "&View"
+    BEGIN
+        MENUITEM "P&ixel",                      ID_VIEW_PIXEL
+        MENUITEM "&Line",                       ID_VIEW_LINE
+        MENUITEM "&Polyline",                   ID_VIEW_POLYLINE
+        MENUITEM "&Ellipse",                    ID_VIEW_RECT
+        MENUITEM "Poly&gon",                    ID_VIEW_POLYGON
+        MENUITEM "&Text",                       ID_VIEW_TEXT
+        MENUITEM "&Drawing Mode",               ID_VIEW_DRAWMODE
+        MENUITEM "&Mapping Mode",               ID_VIEW_MAPMODE
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_EXIT
+    END
+    POPUP "&Options"
+    BEGIN
+        MENUITEM "Foreground &Color",           ID_OPTIONS_FOREGROUND
+        MENUITEM "&Background Color",           ID_OPTIONS_BACKGROUND
+        MENUITEM "&Font",                       ID_OPTIONS_FONT
+        MENUITEM "&Region",                     ID_OPTIONS_REGION
+        MENUITEM "&Anisotropic",                ID_OPTIONS_ANISOTROPIC
+        MENUITEM "&Pie",                        ID_OPTIONS_PIE
+        MENUITEM "&Winding",                    ID_OPTIONS_WINDING
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Instructions",               ID_HELP_INSTRUCTIONS
+    END
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

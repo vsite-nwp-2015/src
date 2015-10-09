@@ -1,0 +1,31 @@
+#include "res.h"
+
+IDI_P2 ICON "p2.ico"
+IDC_P2 CURSOR "p2.cur"
+
+STRINGTABLE
+BEGIN
+	IDS_B1 "Custom"
+	IDS_B2 "Move me!"
+END
+
+ID_BIN MYTYPE
+BEGIN
+	0x776e, 0x2070, 0x6576, 0x7473
+END
+
+IDM_P2 MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New",  	ID_FILE_NEW
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",   	ID_FILE_EXIT
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Index",	ID_HELP_INDEX, GRAYED
+        MENUITEM "&Tooltips",	ID_HELP_TIPS, 	CHECKED
+        MENUITEM "&About",	ID_HELP_ABOUT
+    END
+END

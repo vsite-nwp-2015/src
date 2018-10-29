@@ -62,19 +62,19 @@ protected:
 	}
 	void OnTimer(int id)
 	{
+		tstringstream ss;
 		// change main window caption
-		TCHAR s[32]; 
-		_stprintf(s, _T("NWP 4 - %d"), timer++);
-		SetWindowText(*this, s);
+		ss << _T("NWP 4 - ") << timer++;
+		SetWindowText(*this, ss.str().c_str());
 	}
 
 	void OnLButtonDblClk(POINT p)  
 	{ 
 		// display kordinates on double click
 		// do not forget CS_DBLCLKS in WNDCLASS
-		TCHAR s[64]; 
-		_stprintf(s, _T("double click\n(%d, %d)"), p.x, p.y);
-		MessageBox(*this, s, _T("NWP 4"), MB_OK|MB_ICONEXCLAMATION);
+		tstringstream ss;
+		ss << _T("double click\n(") << p.x << _T(", ") << p.y << _T(")");
+		MessageBox(*this, ss.str().c_str(), _T("NWP 4"), MB_OK|MB_ICONEXCLAMATION);
 	}
 
 	void OnDestroy()

@@ -33,9 +33,9 @@ bool Window::Register(const tstring& name)
 tstring Window::GenerateClassName()
 {
 	static int cnt=1;
-	TCHAR s[16];
-	_stprintf(s, _T("NWP%d"), cnt++);
-	return tstring(s);
+	tstringstream ss;
+	ss << _T("NWP") << cnt++;
+	return ss.str();
 }
 
 Window::Window() : hw(0) {}

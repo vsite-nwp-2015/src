@@ -1,14 +1,20 @@
-# Compiled Object files
 *.obj
-
-# Precompiled Headers
 *.pch
-
-# Compiled Dynamic libraries
 *.dll
 
-# Compiled Static libraries
 *.lib
-
-# Executables
 *.exe
+*.opendb
+*.db
+*.db-wal
+*.db-shm
+*.suo
+*.tlog
+*.pdb
+*.idb
+*.ilk
+*.ipch
+*.log
+*.res
+*.user
+*.aps

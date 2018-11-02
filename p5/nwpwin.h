@@ -9,8 +9,10 @@
 #include <windows.h>
 #include <windowsx.h>
 #include <string>
+#include <sstream>
 #include <tchar.h>
 typedef std::basic_string<TCHAR> tstring;
+typedef std::basic_stringstream<TCHAR> tstringstream;
 
 class Application 
 {

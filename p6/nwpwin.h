@@ -1,9 +1,9 @@
 // synchronize UNICODE options: UNICODE is for windows.h, _UNICODE is for tchar.h
 #if defined(_UNICODE) && !defined(UNICODE)
-        #define UNICODE
+#define UNICODE
 #endif
 #if defined(UNICODE) && !defined(_UNICODE)
-        #define _UNICODE
+#define _UNICODE
 #endif
 
 #include <windows.h>
@@ -11,62 +11,52 @@
 #include <string>
 #include <sstream>
 #include <tchar.h>
-
 typedef std::basic_string<TCHAR> tstring;
-typedef std::basic_stringstream<TCHAR> tsstream;
+typedef std::basic_stringstream<TCHAR> tstringstream;
 
-class Application 
+namespace vsite::nwp {
+
+class application
 {
 public:
-	int Run();
+	int run();
 };
 
-class Window
+class window
 {
-	HWND hw;
+	HWND hw{ 0 };
 
 protected:
-	virtual tstring ClassName();
-	bool Register(const tstring& name);
-	tstring GenerateClassName();
+	virtual tstring class_name();
+	bool register_class(const tstring& name);
+	tstring generate_class_name();
 
 public:
-	Window();
-
-	bool Create(HWND parent, DWORD style, LPCTSTR caption=0, int IdOrMenu=0, 
-		int x=CW_USEDEFAULT, int y=CW_USEDEFAULT, int width=CW_USEDEFAULT, int height=CW_USEDEFAULT);
+	bool create(HWND parent, DWORD style, LPCTSTR caption = 0, int IdOrMenu = 0,
+		int x = CW_USEDEFAULT, int y = CW_USEDEFAULT, int width = CW_USEDEFAULT, int height = CW_USEDEFAULT);
 
 	operator HWND();
-	static LRESULT CALLBACK Proc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam);
+	static LRESULT CALLBACK proc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam);
 
-//	messages
+	//	messages
 protected:
-	virtual int OnCreate(CREATESTRUCT*) { return 0; }
-	virtual void OnCommand(int)  { }
-	virtual void OnDestroy()  { }
+	virtual int on_create(CREATESTRUCT*) { return 0; }
+	virtual void on_command(int) { }
+	virtual void on_destroy() { }
 
-	virtual void OnKeyDown(int key)  { }
-	virtual void OnKeyUp(int key)  { }
-	virtual void OnChar(TCHAR c)  { }
-	virtual void OnLButtonDown(POINT p)  { }
-	virtual void OnRButtonDown(POINT p)  { }
-	virtual void OnLButtonUp(POINT p)  { }
-	virtual void OnLButtonDblClk(POINT p)  { }
+	virtual void on_key_down(int key) { }
+	virtual void on_key_up(int key) { }
+	virtual void on_char(TCHAR c) { }
+	virtual void on_left_button_down(POINT p) { }
+	virtual void on_right_button_down(POINT p) { }
+	virtual void on_left_button_up(POINT p) { }
+	virtual void on_left_button_double_click(POINT p) { }
 
-	virtual void OnTimer(int id)  { }
+	virtual void on_timer(int id) { }
 
-	virtual void OnPaint(HDC dc)  { }
+	virtual void on_paint(HDC hdc) { }
 };
 
+void set_icons(HINSTANCE instance, HWND window, int icon_id);
 
-class Button : public Window
-{
-protected:
-	virtual tstring ClassName(){ return tstring(_T("BUTTON")); }
-};
-
-class Edit : public Window
-{
-protected:
-	virtual tstring ClassName(){ return tstring(_T("EDIT")); }
-};
+} // namespace

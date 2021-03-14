@@ -1,95 +1,96 @@
-class Font {
+#pragma once
+
+namespace vsite::nwp::gdi {
+
+class font {
 	HFONT h;
 public:
-	Font(const LOGFONT& lf) {
+	font(const LOGFONT& lf) {
 		h = ::CreateFontIndirect(&lf);
 	}
-	Font(const TCHAR* name, int height, bool bold=false, bool italic=false, int angle=0, bool underline=false) : h(NULL) {
-		h = ::CreateFont(height, 0, angle*10, 0, bold ? FW_BOLD : FW_NORMAL, italic, underline,	0, 0, 0, 0, 0, 0, name);
+	font(const TCHAR* name, int height, bool bold = false, bool italic = false, int angle = 0, bool underline = false) : h(NULL) {
+		h = ::CreateFont(height, 0, angle * 10, 0, bold ? FW_BOLD : FW_NORMAL, italic, underline, 0, 0, 0, 0, 0, 0, name);
 	}
-	~Font(){ if(h) ::DeleteObject(h); }
+	~font() { if (h) ::DeleteObject(h); }
 	operator HFONT() { return h; }
 };
 
-class Pen {
+class pen {
 	HPEN h;
 public:
-	Pen(COLORREF color, int width=1, int style=PS_SOLID) :
-	  h(::CreatePen(style, width, color)) {}
-	~Pen(){ ::DeleteObject(h); }
+	pen(COLORREF color, int width = 1, int style = PS_SOLID) :
+		h(::CreatePen(style, width, color)) {}
+	~pen() { ::DeleteObject(h); }
 	operator HPEN() { return h; }
 };
 
-class Brush {
+class brush {
 	HBRUSH h;
 public:
-	Brush(COLORREF color, int hatch=-1) : 
-	  h(hatch >= 0 ? CreateHatchBrush(hatch, color) : ::CreateSolidBrush(color)) {} 
-	~Brush(){ ::DeleteObject(h); }
+	brush(COLORREF color, int hatch = -1) :
+		h(hatch >= 0 ? CreateHatchBrush(hatch, color) : ::CreateSolidBrush(color)) {}
+	~brush() { ::DeleteObject(h); }
 	operator HBRUSH() { return h; }
 };
 
-class Bitmap {
+class bitmap {
 	HBITMAP h;
 public:
-	Bitmap(int w, int h, int bc, int pl=1, const void* p=0) : 
-		h(::CreateBitmap(w, h, pl, bc, p)) {} 
-	Bitmap(HDC hdc, int w, int h) : 
-		h(::CreateCompatibleBitmap(hdc, w, h)) {} 
-	~Bitmap(){ ::DeleteObject(h); }
+	bitmap(int w, int h, int bc, int pl = 1, const void* p = 0) :
+		h(::CreateBitmap(w, h, pl, bc, p)) {}
+	bitmap(HDC hdc, int w, int h) :
+		h(::CreateCompatibleBitmap(hdc, w, h)) {}
+	~bitmap() { ::DeleteObject(h); }
 	operator HBITMAP() { return h; }
 };
 
-class DC {
+class dc {
 	HDC h;
 protected:
-	DC(HDC h) : h(h) {}
+	dc(HDC h) : h(h) {}
 public:
 	operator HDC() const { return h; }
 };
 
-class PaintDC : public DC {
+class paint_dc : public dc {
 	HWND hw;
 	PAINTSTRUCT ps;
 public:
-	PaintDC(HWND hw) : hw(hw), DC(::BeginPaint(hw, &ps)) {}
-	~PaintDC() { ::EndPaint(hw, &ps); }
+	paint_dc(HWND hw) : hw(hw), dc(::BeginPaint(hw, &ps)) {}
+	~paint_dc() { ::EndPaint(hw, &ps); }
 };
 
-class ClientDC : public DC {
+class client_dc : public dc {
 	HWND hw;
 public:
-	ClientDC(HWND hw) : hw(hw), DC(::GetDC(hw)) {}
-	~ClientDC() { ::ReleaseDC(hw, *this); }
+	client_dc(HWND hw) : hw(hw), dc(::GetDC(hw)) {}
+	~client_dc() { ::ReleaseDC(hw, *this); }
 };
 
-class MemDC : public DC {
+class mem_dc : public dc {
 public:
-	MemDC(HDC hdc) : DC(::CreateCompatibleDC(hdc)) {}
-	~MemDC() { ::DeleteDC(*this); }
+	mem_dc(HDC hdc) : dc(::CreateCompatibleDC(hdc)) {}
+	~mem_dc() { ::DeleteDC(*this); }
 };
 
-class Region {
+class region {
 	HRGN h;
 public:
-#ifdef UNDER_CE
-	Region(const RECT& rc) : h(::CreateRectRgnIndirect(&rc)){}
-#else
-	Region(const RECT& rc, bool ellip=false) :
-		h(ellip ? ::CreateEllipticRgnIndirect(&rc) : ::CreateRectRgnIndirect(&rc)){}
-	Region(const POINT* pts, int n) :
+	region(const RECT& rc, bool ellip = false) :
+		h(ellip ? ::CreateEllipticRgnIndirect(&rc) : ::CreateRectRgnIndirect(&rc)) {}
+	region(const POINT* pts, int n) :
 		h(::CreatePolygonRgn(pts, n, WINDING)) {}
-#endif
-	~Region() { ::DeleteObject(h); }
+	~region() { ::DeleteObject(h); }
 	operator HRGN() { return h; }
 };
 
-class DCSelObj {
+class sel_obj {
 	HDC hdc;
 	HGDIOBJ hOld;
 public:
-	DCSelObj(HDC hdc, HGDIOBJ hObj) : 
+	sel_obj(HDC hdc, HGDIOBJ hObj) :
 		hdc(hdc), hOld(::SelectObject(hdc, hObj)) { }
-	~DCSelObj() { ::SelectObject(hdc, hOld);  }
+	~sel_obj() { ::SelectObject(hdc, hOld); }
 };
 
+} // namespace

@@ -4,15 +4,14 @@
 #include <list>
 #include <algorithm>
 
-// base class Window is extended with OnPaint virtual function
-
-
-class SelObj {
+// base class window is extended with on_paint virtual function
+namespace {
+class sel_obj {
 	HDC hdc;
 	HGDIOBJ hOld;
 public:
-	SelObj(HDC hdc, HGDIOBJ hObj) : hdc(hdc), hOld(::SelectObject(hdc, hObj)) { }
-	~SelObj() { ::SelectObject(hdc, hOld);  }
+	sel_obj(HDC hdc, HGDIOBJ hObj) : hdc(hdc), hOld(::SelectObject(hdc, hObj)) { }
+	~sel_obj() { ::SelectObject(hdc, hOld); }
 };
 
 class draw
@@ -20,82 +19,70 @@ class draw
 	HDC hdc;
 public:
 	draw(HDC hdc) : hdc(hdc) {}
-	void operator()(POINT p) { Ellipse(hdc, p.x-10, p.y-10, p.x+10, p.y+10); }
+	void operator()(POINT p) { ::Ellipse(hdc, p.x - 10, p.y - 10, p.x + 10, p.y + 10); }
 };
+} // namespace
 
-class MyWindow : public Window
+class main_window : public vsite::nwp::window
 {
-	bool usePaint;
+	bool use_paint{ false };
 	std::list<POINT> points;
-public:
-	MyWindow() : usePaint(false) {}
 protected:
 
-	int OnCreate(CREATESTRUCT* pcs)
-	{
-		return 0;		
-	}
-	void OnCommand(int id)
+	void on_command(int id) override
 	{
 		switch(id){
 			case ID_FILE_PAINT:
-				usePaint = !usePaint;
-				InvalidateRect(*this, 0, TRUE);
+				use_paint = !use_paint;
+				::InvalidateRect(*this, 0, TRUE);
 				points.clear();
-				CheckMenuItem(GetSubMenu(GetMenu(*this), 0), ID_FILE_PAINT, usePaint ? MF_CHECKED : MF_UNCHECKED);
+				::CheckMenuItem(GetSubMenu(GetMenu(*this), 0), ID_FILE_PAINT, use_paint ? MF_CHECKED : MF_UNCHECKED);
 				break;
 			case ID_EXIT:
-				DestroyWindow(*this);
+				::DestroyWindow(*this);
 				break;
 		}
 	}
 
-	void OnLButtonDown(POINT p)  
+	void on_left_button_down(POINT p) override
 	{ 
-		if(usePaint)
+		if(use_paint)
 		{
 			points.push_back(p);
 			RECT rc = {p.x-10, p.y-10, p.x+10, p.y+10}; 
-			InvalidateRect(*this, &rc, TRUE);
+			::InvalidateRect(*this, &rc, TRUE);
 		}
 		else
 		{
-			HDC hdc = GetDC(*this);
+			HDC hdc = ::GetDC(*this);
 			draw d(hdc);
 			d(p);
-			ReleaseDC(*this, hdc);
+			::ReleaseDC(*this, hdc);
 		}
 	}
 
-	void OnPaint(HDC hdc)  
+	void on_paint(HDC hdc) override  
 	{ 
 		::LineTo(hdc, 100, 100);
 		{
-			SelObj selpen(hdc, ::GetStockObject(WHITE_PEN));
-			SelObj selbrush(hdc, ::GetStockObject(HOLLOW_BRUSH));
+			sel_obj sel_pen(hdc, ::GetStockObject(WHITE_PEN));
+			sel_obj sel_brush(hdc, ::GetStockObject(HOLLOW_BRUSH));
 			std::for_each(points.begin(), points.end(), draw(hdc));
 		}
 		::LineTo(hdc, 0, 200);
 	}
 
-	void OnDestroy()
+	void on_destroy() override
 	{
 		::PostQuitMessage(0);
 	}
-
 };
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hp, LPSTR cmdLine, int nShow)
+int WINAPI WinMain(HINSTANCE instance, HINSTANCE, LPSTR, int)
 {
-	Application app;
-	MyWindow wnd;	
-	HMENU hMenu = LoadMenu(hInstance, MAKEINTRESOURCE(IDM_P5));
-	wnd.Create(NULL, WS_OVERLAPPEDWINDOW | WS_VISIBLE, _T("NWP 5"), (int)hMenu);
-	// set icons
-	HICON hib = (HICON)LoadImage(hInstance, MAKEINTRESOURCE(IDI_P5), IMAGE_ICON, 32, 32, LR_DEFAULTCOLOR);
-	PostMessage(wnd, WM_SETICON, ICON_BIG, reinterpret_cast<LPARAM>(hib));
-	HICON his = (HICON)LoadImage(hInstance, MAKEINTRESOURCE(IDI_P5), IMAGE_ICON, 16, 16, LR_DEFAULTCOLOR);
-	PostMessage(wnd, WM_SETICON, ICON_SMALL, reinterpret_cast<LPARAM>(his));
-
-	return app.Run();
+	main_window w;
+	w.create(0, WS_OVERLAPPEDWINDOW | WS_VISIBLE, _T("NWP 5"), (int)::LoadMenu(instance, MAKEINTRESOURCE(IDM_P5)));
+	vsite::nwp::set_icons(instance, w, IDI_P5);
+	vsite::nwp::application app;
+	return app.run();
 }

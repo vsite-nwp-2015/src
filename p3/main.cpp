@@ -1,5 +1,5 @@
 #include <windows.h>
-#include <stdio.h> // sprintf
+#include <string>
 #include "resource.h"
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -33,14 +33,14 @@ void OnInitDialog(HWND hDlg)
 	CheckRadioButton(hDlg, IDC_RADIO1, IDC_RADIO3, IDC_RADIO2);
 	// combo box
 	for(int i=0; i<10; ++i){
-		char s[16]; sprintf(s, "item %d", i);
-		SendDlgItemMessage(hDlg, IDC_COMBO1, CB_ADDSTRING, 0, (LPARAM)s);
+		std::string s { "item " + std::to_string(i) };
+		SendDlgItemMessage(hDlg, IDC_COMBO1, CB_ADDSTRING, 0, (LPARAM)s.c_str());
 	}
 	SendDlgItemMessage(hDlg, IDC_COMBO1, CB_SETCURSEL, 1, 0);
 	// list box
-	for(int j=0; j<10; ++j){
-		char s[16]; sprintf(s, "item %d", j);
-		SendDlgItemMessage(hDlg, IDC_LIST1, LB_ADDSTRING, 0, (LPARAM)s);
+	for(int i=0; i<10; ++i){
+		std::string s { "item " + std::to_string(i) };
+		SendDlgItemMessage(hDlg, IDC_LIST1, LB_ADDSTRING, 0, (LPARAM)s.c_str());
 	}
 	SendDlgItemMessage(hDlg, IDC_LIST1, LB_SETCURSEL, 2, 0);
 }
@@ -144,7 +144,7 @@ void Color(HWND parent)
 void Font(HWND parent)
 {
 	static LOGFONT lf = {0}; 
-	if(0 == *lf.lfFaceName) strcpy(lf.lfFaceName, "Arial");
+	if(0 == *lf.lfFaceName) strcpy_s(lf.lfFaceName, "Arial");
 
 	CHOOSEFONT cf;
 	ZeroMemory(&cf, sizeof cf);
@@ -255,3 +255,5 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hp, LPSTR cmdLine, int nShow)
 	return msg.wParam;
 }
 
+// enable themes support ("visual styles")
+#pragma comment(linker,"/manifestdependency:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='x86' publicKeyToken='6595b64144ccf1df' language='*'\"")

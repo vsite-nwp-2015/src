@@ -1,5 +1,5 @@
 Dodani èlanovi u klasu View:
-- int CViewnumPages, fontSize;
+- int numPages, fontSize;
 - CString fontName;
 
 Dodane i promijenjene metode:

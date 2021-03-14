@@ -47,16 +47,8 @@ BOOL App::InitInstance()
 {
 	AfxEnableControlContainer();
 
-	// Standard initialization
-
-#ifdef _AFXDLL
-	Enable3dControls();			// Call this when using MFC in a shared DLL
-#else
-	Enable3dControlsStatic();	// Call this when linking to MFC statically
-#endif
-
-	// use HKEY_CURRENT_USER\Software\UNIST\p10
-	SetRegistryKey(_T("UNIST"));
+	// use HKEY_CURRENT_USER\Software\VSITE\p10
+	SetRegistryKey(_T("VSITE"));
 	// if this is not called c:/windows/p10.ini would be used
 
 	LoadStdProfileSettings();  // Load standard INI file options (including MRU)

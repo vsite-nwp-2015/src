@@ -1,23 +1,25 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "p1", "p1\p1.vcproj", "{45DB76EE-5AFF-4AA5-8D64-B001612398A8}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "p1", "p1\p1.vcxproj", "{45DB76EE-5AFF-4AA5-8D64-B001612398A8}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "p10", "p10\p10.vcproj", "{77E1521E-08F2-4877-B96A-F1DFD4B66964}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "p10", "p10\p10.vcxproj", "{77E1521E-08F2-4877-B96A-F1DFD4B66964}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "p2", "p2\p2.vcproj", "{63A7F3F9-D6D3-481A-8D7D-46647CA695A6}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "p2", "p2\p2.vcxproj", "{63A7F3F9-D6D3-481A-8D7D-46647CA695A6}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "p3", "p3\p3.vcproj", "{E1AA12AA-C2F8-4998-9651-A5A6869412C7}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "p3", "p3\p3.vcxproj", "{E1AA12AA-C2F8-4998-9651-A5A6869412C7}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "p4", "p4\p4.vcproj", "{4072146F-2BCF-44B7-B663-6140BD5F3971}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "p4", "p4\p4.vcxproj", "{4072146F-2BCF-44B7-B663-6140BD5F3971}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "p5", "p5\p5.vcproj", "{61C22ACA-7D2B-4E67-8DFA-53408E9D54B9}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "p5", "p5\p5.vcxproj", "{61C22ACA-7D2B-4E67-8DFA-53408E9D54B9}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "p6", "p6\p6.vcproj", "{B0D4F487-3364-42D0-AA91-DDB3266AFB0A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "p6", "p6\p6.vcxproj", "{B0D4F487-3364-42D0-AA91-DDB3266AFB0A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "p8", "p8\p8.vcproj", "{98611356-CAB2-4ED1-84ED-813D9BECBF77}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "p8", "p8\p8.vcxproj", "{98611356-CAB2-4ED1-84ED-813D9BECBF77}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "p9", "p9\p9.vcproj", "{994520EE-CE8F-4643-B4F6-0728E3DFAF9E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "p9", "p9\p9.vcxproj", "{994520EE-CE8F-4643-B4F6-0728E3DFAF9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -102,5 +104,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {44A6F4B5-190D-42F7-BBE4-339ADCFA1354}
 	EndGlobalSection
 EndGlobal
